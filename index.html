@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Robson Bet 777</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            ROBSON <span>BET</span>
+        </div>
+
+        <nav>
+            <a href="#">Início</a>
+            <a href="#jogos">Jogos</a>
+            <a href="#ranking">Ranking</a>
+            <a href="#">Robson</a>
+        </nav>
+
+        <button class="coins">
+            🪙 <span id="coin-count">0</span> Coins
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <p class="small-title">
+                    BEM-VINDO À
+                </p>
+
+                <h1>
+                    ROBSON<br>
+                    <span>BET 777</span>
+                </h1>
+
+                <p class="description">
+                    Entre nos desafios, acumule Robson Coins
+                    e tente chegar ao topo do ranking!
+                </p>
+
+                <button
+                    class="play-button"
+                    onclick="irParaJogos()">
+                    COMEÇAR A JOGAR
+                </button>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <img
+                    src="robson.png"
+                    alt="Robson">
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="games"
+            id="jogos">
+
+            <h2>
+                🔥 JOGOS EM DESTAQUE
+            </h2>
+
+
+            <div class="game-container">
+
+
+                <!-- JOGO DOS DADOS -->
+
+                <div class="game-card">
+
+                    <div class="game-icon">
+                        🎲
+                    </div>
+
+                    <h3>
+                        Desafio dos Dados
+                    </h3>
+
+                    <p>
+                        Veja os dois dados, faça a soma
+                        e digite sua resposta!
+                    </p>
+
+
+                    <button
+                        onclick="jogarDados()">
+                        🎲 ROLAR DADOS
+                    </button>
+
+
+                    <div
+                        id="dados"
+                        class="dados">
+                    </div>
+
+
+                    <div
+                        id="area-resposta"
+                        class="area-resposta"
+                        style="display: none;">
+
+                        <input
+                            type="number"
+                            id="resposta-dados"
+                            placeholder="Sua resposta">
+
+                        <button
+                            onclick="verificarResposta()">
+                            RESPONDER
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="resultado-dados"
+                        class="resultado">
+                    </div>
+
+                </div>
+
+
+                <!-- QUIZ -->
+
+                <div class="game-card">
+
+                    <div class="game-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        Quiz do Robson
+                    </h3>
+
+                    <p>
+                        Responda perguntas e acumule
+                        Robson Coins.
+                    </p>
+
+                    <button>
+                        EM BREVE
+                    </button>
+
+                </div>
+
+
+                <!-- DESAFIO 777 -->
+
+                <div class="game-card">
+
+                    <div class="game-icon">
+                        🎯
+                    </div>
+
+                    <h3>
+                        Desafio 777
+                    </h3>
+
+                    <p>
+                        Supere desafios e entre no ranking.
+                    </p>
+
+                    <button>
+                        EM BREVE
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+                </section>
+
+
+        <!-- RANKING -->
+
+        <section
+            class="ranking"
+            id="ranking">
+
+            <h2>
+                🏆 RANKING
+            </h2>
+
+            <p class="ranking-subtitle">
+                Os jogadores com mais Robson Coins
+            </p>
+
+            <div class="ranking-list">
+
+                <div class="ranking-player">
+                    <span class="position">🥇</span>
+                    <span class="player-name">Robson</span>
+                    <span class="player-points">850</span>
+                </div>
+
+                <div class="ranking-player">
+                    <span class="position">🥈</span>
+                    <span class="player-name">Pedro</span>
+                    <span class="player-points">720</span>
+                </div>
+
+                <div class="ranking-player">
+                    <span class="position">🥉</span>
+                    <span class="player-name">João</span>
+                    <span class="player-points">650</span>
+                </div>
+
+                <div class="ranking-player">
+                    <span class="position">4º</span>
+                    <span class="player-name">Lucas</span>
+                    <span class="player-points">510</span>
+                </div>
+
+                <div class="ranking-player">
+                    <span class="position">5º</span>
+                    <span class="player-name">Ana</span>
+                    <span class="player-points">430</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 Robson Bet 777 — Projeto fictício
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+<div id="tela-apelido" class="tela-apelido">
+
+    <div class="caixa-apelido">
+
+        <h2>🎮 BEM-VINDO!</h2>
+
+        <p>Escolha seu apelido para começar:</p>
+
+        <input
+            type="text"
+            id="apelido"
+            placeholder="Digite seu apelido"
+            maxlength="15"
+        >
+
+        <button onclick="entrarNoJogo()">
+            ENTRAR
+        </button>
+
+    </div>
+
+</div>
+
+</html>
+
+<section class="historico" id="historico">
+
+    <h2>📜 SEU HISTÓRICO</h2>
+
+    <p class="historico-subtitle">
+        Veja suas partidas e Coins conquistadas
+    </p>
+
+    <div id="lista-historico" class="lista-historico">
+    </div>
+
+</section>
