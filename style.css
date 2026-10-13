@@ -737,3 +737,479 @@ footer {
     color: #777;
     font-size: 13px;
 }
+
+/* =========================
+   BLACKJACK 21
+========================= */
+
+.blackjack-jogo {
+    margin-top: 20px;
+    padding: 20px;
+    background: #111;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.blackjack-area {
+    margin-bottom: 20px;
+}
+
+.blackjack-area h4 {
+    margin-bottom: 10px;
+    color: #ffd700;
+}
+
+.cartas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 70px;
+}
+
+.carta {
+    width: 48px;
+    height: 68px;
+
+    background: white;
+    color: #111;
+
+    border-radius: 7px;
+    border: 2px solid #ddd;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+    animation: cartaEntrando 0.3s ease;
+}
+
+.carta.vermelha {
+    color: #d00000;
+}
+
+.carta.escondida {
+    background: #b00000;
+    color: white;
+    border-color: #ffd700;
+}
+
+@keyframes cartaEntrando {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) rotate(-5deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
+}
+
+.blackjack-acoes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.blackjack-acoes button {
+    padding: 10px 14px;
+}
+
+.resultado-blackjack {
+    margin-top: 18px;
+    min-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+/* =========================================
+   ROLETA ROBSON
+========================================= */
+
+.roleta-card {
+    overflow: hidden;
+}
+
+
+/* ÁREA DA ROLETA */
+
+.roleta-area {
+    position: relative;
+    width: 240px;
+    height: 250px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* SETA */
+
+.roleta-seta {
+    position: absolute;
+    top: -2px;
+    z-index: 10;
+
+    font-size: 30px;
+    color: #ffd700;
+
+    text-shadow:
+        0 0 5px #000,
+        0 0 10px #000;
+}
+
+
+/* RODA */
+
+.roleta {
+    position: relative;
+
+    width: 210px;
+    height: 210px;
+
+    border-radius: 50%;
+
+    border: 8px solid #d4af37;
+
+    background:
+        conic-gradient(
+            #111 0deg 9.73deg,
+            #c40000 9.73deg 19.46deg,
+            #111 19.46deg 29.19deg,
+            #c40000 29.19deg 38.92deg,
+            #111 38.92deg 48.65deg,
+            #c40000 48.65deg 58.38deg,
+            #111 58.38deg 68.11deg,
+            #c40000 68.11deg 77.84deg,
+            #111 77.84deg 87.57deg,
+            #c40000 87.57deg 97.30deg,
+            #111 97.30deg 107.03deg,
+            #c40000 107.03deg 116.76deg,
+            #111 116.76deg 126.49deg,
+            #c40000 126.49deg 136.22deg,
+            #111 136.22deg 145.95deg,
+            #c40000 145.95deg 155.68deg,
+            #111 155.68deg 165.41deg,
+            #c40000 165.41deg 175.14deg,
+            #111 175.14deg 184.87deg,
+            #c40000 184.87deg 194.60deg,
+            #111 194.60deg 204.33deg,
+            #c40000 204.33deg 214.06deg,
+            #111 214.06deg 223.79deg,
+            #c40000 223.79deg 233.52deg,
+            #111 233.52deg 243.25deg,
+            #c40000 243.25deg 252.98deg,
+            #111 252.98deg 262.71deg,
+            #c40000 262.71deg 272.44deg,
+            #111 272.44deg 282.17deg,
+            #c40000 282.17deg 291.90deg,
+            #111 291.90deg 301.63deg,
+            #c40000 301.63deg 311.36deg,
+            #111 311.36deg 321.09deg,
+            #c40000 321.09deg 330.82deg,
+            #111 330.82deg 340.55deg,
+            #c40000 340.55deg 350.28deg,
+            #0b7a3b 350.28deg 360deg
+        );
+
+    box-shadow:
+        0 0 15px rgba(255, 215, 0, 0.5),
+        inset 0 0 15px #000;
+
+    transition:
+        transform 4s
+        cubic-bezier(0.12, 0.8, 0.15, 1);
+}
+
+
+/* NÚMEROS */
+
+.roleta-numeros {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+}
+
+.roleta-numeros span {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 25px;
+    height: 25px;
+
+    margin-left: -12px;
+    margin-top: -12px;
+
+    text-align: center;
+    line-height: 25px;
+
+    color: white;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    text-shadow: 1px 1px 2px #000;
+}
+
+
+/* POSIÇÃO DOS NÚMEROS */
+
+.roleta-numeros span:nth-child(1) {
+    transform: rotate(0deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(2) {
+    transform: rotate(9.73deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(3) {
+    transform: rotate(19.46deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(4) {
+    transform: rotate(29.19deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(5) {
+    transform: rotate(38.92deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(6) {
+    transform: rotate(48.65deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(7) {
+    transform: rotate(58.38deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(8) {
+    transform: rotate(68.11deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(9) {
+    transform: rotate(77.84deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(10) {
+    transform: rotate(87.57deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(11) {
+    transform: rotate(97.30deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(12) {
+    transform: rotate(107.03deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(13) {
+    transform: rotate(116.76deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(14) {
+    transform: rotate(126.49deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(15) {
+    transform: rotate(136.22deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(16) {
+    transform: rotate(145.95deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(17) {
+    transform: rotate(155.68deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(18) {
+    transform: rotate(165.41deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(19) {
+    transform: rotate(175.14deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(20) {
+    transform: rotate(184.87deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(21) {
+    transform: rotate(194.60deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(22) {
+    transform: rotate(204.33deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(23) {
+    transform: rotate(214.06deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(24) {
+    transform: rotate(223.79deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(25) {
+    transform: rotate(233.52deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(26) {
+    transform: rotate(243.25deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(27) {
+    transform: rotate(252.98deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(28) {
+    transform: rotate(262.71deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(29) {
+    transform: rotate(272.44deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(30) {
+    transform: rotate(282.17deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(31) {
+    transform: rotate(291.90deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(32) {
+    transform: rotate(301.63deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(33) {
+    transform: rotate(311.36deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(34) {
+    transform: rotate(321.09deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(35) {
+    transform: rotate(330.82deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(36) {
+    transform: rotate(340.55deg) translateY(-82px);
+}
+
+.roleta-numeros span:nth-child(37) {
+    transform: rotate(350.28deg) translateY(-82px);
+}
+
+
+/* CENTRO */
+
+.roleta-centro {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    border: 5px solid #d4af37;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffd700;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    box-shadow: 0 0 10px #000;
+}
+
+
+/* BOTÕES DE COR */
+
+.roleta-opcoes {
+    display: flex;
+    gap: 8px;
+
+    justify-content: center;
+
+    margin: 10px 0;
+}
+
+.roleta-cor {
+    border: none;
+
+    padding: 9px 13px;
+
+    border-radius: 8px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.roleta-cor.vermelho {
+    background: #c40000;
+}
+
+.roleta-cor.preto {
+    background: #111;
+    border: 1px solid #555;
+}
+
+.roleta-cor.selecionada {
+    outline: 3px solid #ffd700;
+}
+
+
+/* BOTÃO GIRAR */
+
+.botao-roleta {
+    width: 90%;
+
+    margin: 10px auto;
+
+    display: block;
+}
+
+
+/* RESULTADO */
+
+.resultado-roleta {
+    min-height: 45px;
+
+    margin-top: 12px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    color: #ffd700;
+}
