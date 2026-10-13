@@ -1,31 +1,43 @@
-<title>Robson BET 777 — Jogo de Dados</title>
-
-<meta name="description"
-      content="Robson BET 777 é um jogo de dados fictício e gratuito. Role os dados, marque pontos e acompanhe suas estatísticas.">
-
-<meta name="robots" content="index, follow">
-
-<link rel="canonical"
-      href="https://pedrokuppens-art.github.io/robson-bet-777/">
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Robson BET 777 — Jogo de Dados</title>
+    <title>Robson BET 777 — Jogos</title>
 
-    <meta name="description" content="Robson BET 777 é um jogo de dados fictício e gratuito. Role os dados e acompanhe seus resultados.">
+    <meta
+        name="description"
+        content="Robson BET 777 é um projeto fictício de jogos com Robson Coins."
+    >
 
-    <meta name="robots" content="index, follow">
+    <meta
+        name="robots"
+        content="index, follow"
+    >
 
-    <link rel="canonical" href="https://pedrokuppens-art.github.io/robson-bet-777/">
+    <link
+        rel="canonical"
+        href="https://pedrokuppens-art.github.io/robson-bet-777/"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
 
+
 <body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
 
     <header>
 
@@ -33,21 +45,46 @@
             ROBSON <span>BET</span>
         </div>
 
+
         <nav>
-            <a href="#">Início</a>
-            <a href="#jogos">Jogos</a>
-            <a href="#ranking">Ranking</a>
-            <a href="#">Robson</a>
+
+            <a href="#">
+                Início
+            </a>
+
+            <a href="#jogos">
+                Jogos
+            </a>
+
+            <a href="#ranking">
+                Ranking
+            </a>
+
+            <a href="#">
+                Robson
+            </a>
+
         </nav>
 
+
         <button class="coins">
-            🪙 <span id="coin-count">0</span> Coins
+
+            🪙
+            <span id="coin-count">0</span>
+            Coins
+
         </button>
 
     </header>
 
 
+
     <main>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
 
         <section class="hero">
 
@@ -57,39 +94,61 @@
                     BEM-VINDO À
                 </p>
 
+
                 <h1>
+
                     ROBSON<br>
-                    <span>BET 777</span>
+
+                    <span>
+                        BET 777
+                    </span>
+
                 </h1>
 
+
                 <p class="description">
-                    Entre nos desafios, acumule Robson Coins
-                    e tente chegar ao topo do ranking!
+
+                    Entre nos desafios, acumule
+                    Robson Coins e tente chegar
+                    ao topo do ranking!
+
                 </p>
+
 
                 <button
                     class="play-button"
-                    onclick="irParaJogos()">
+                    onclick="irParaJogos()"
+                >
+
                     COMEÇAR A JOGAR
+
                 </button>
 
             </div>
+
 
 
             <div class="hero-image">
 
                 <img
                     src="robson.png"
-                    alt="Robson">
+                    alt="Robson"
+                >
 
             </div>
 
         </section>
 
 
+
+        <!-- =========================
+             JOGOS
+        ========================== -->
+
         <section
             class="games"
-            id="jogos">
+            id="jogos"
+        >
 
             <h2>
                 🔥 JOGOS EM DESTAQUE
@@ -99,7 +158,9 @@
             <div class="game-container">
 
 
-                <!-- JOGO DOS DADOS -->
+                <!-- =========================
+                     DADOS
+                ========================== -->
 
                 <div class="game-card">
 
@@ -107,41 +168,56 @@
                         🎲
                     </div>
 
+
                     <h3>
                         Desafio dos Dados
                     </h3>
 
+
                     <p>
-                        Veja os dois dados, faça a soma
-                        e digite sua resposta!
+
+                        Veja os dois dados,
+                        faça a soma e digite
+                        sua resposta!
+
                     </p>
 
 
                     <button
-                        onclick="jogarDados()">
+                        onclick="jogarDados()"
+                    >
+
                         🎲 ROLAR DADOS
+
                     </button>
 
 
                     <div
                         id="dados"
-                        class="dados">
+                        class="dados"
+                    >
                     </div>
 
 
                     <div
                         id="area-resposta"
                         class="area-resposta"
-                        style="display: none;">
+                        style="display: none;"
+                    >
 
                         <input
                             type="number"
                             id="resposta-dados"
-                            placeholder="Sua resposta">
+                            placeholder="Sua resposta"
+                        >
+
 
                         <button
-                            onclick="verificarResposta()">
+                            onclick="verificarResposta()"
+                        >
+
                             RESPONDER
+
                         </button>
 
                     </div>
@@ -149,111 +225,424 @@
 
                     <div
                         id="resultado-dados"
-                        class="resultado">
+                        class="resultado"
+                    >
                     </div>
 
                 </div>
 
 
-                <!-- QUIZ -->
 
-                <div class="game-card">
+               <!-- =========================
+     ROLETA ROBSON
+========================== -->
+
+<div class="game-card roleta-card">
+
+    <div class="game-icon">
+        🎡
+    </div>
+
+    <h3>
+        Roleta Robson
+    </h3>
+
+    <p>
+        Escolha uma cor e gire a roleta!
+    </p>
+
+
+    <!-- ROLETA -->
+
+    <div class="roleta-area">
+
+        <div class="roleta-seta">
+            ▼
+        </div>
+
+        <div
+            id="roleta"
+            class="roleta"
+        >
+
+            <div class="roleta-numeros">
+
+                <span>0</span>
+                <span>32</span>
+                <span>15</span>
+                <span>19</span>
+                <span>4</span>
+                <span>21</span>
+                <span>2</span>
+                <span>25</span>
+                <span>17</span>
+                <span>34</span>
+                <span>6</span>
+                <span>27</span>
+                <span>13</span>
+                <span>36</span>
+                <span>11</span>
+                <span>30</span>
+                <span>8</span>
+                <span>23</span>
+                <span>10</span>
+                <span>5</span>
+                <span>24</span>
+                <span>16</span>
+                <span>33</span>
+                <span>1</span>
+                <span>20</span>
+                <span>14</span>
+                <span>31</span>
+                <span>9</span>
+                <span>22</span>
+                <span>18</span>
+                <span>29</span>
+                <span>7</span>
+                <span>28</span>
+                <span>12</span>
+                <span>35</span>
+                <span>3</span>
+                <span>26</span>
+
+            </div>
+
+            <div class="roleta-centro">
+                R
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ESCOLHA -->
+
+    <div class="roleta-opcoes">
+
+        <button
+            class="roleta-cor vermelho"
+            onclick="escolherCorRoleta('vermelho')"
+        >
+            🔴 Vermelho
+        </button>
+
+
+        <button
+            class="roleta-cor preto"
+            onclick="escolherCorRoleta('preto')"
+        >
+            ⚫ Preto
+        </button>
+
+    </div>
+
+
+    <!-- GIRAR -->
+
+    <button
+        class="botao-roleta"
+        onclick="girarRoleta()"
+    >
+        🎡 GIRAR ROLETA
+    </button>
+
+
+    <!-- RESULTADO -->
+
+    <div
+        id="resultado-roleta"
+        class="resultado-roleta"
+    ></div>
+
+</div>
+
+
+
+                <!-- =========================
+                     BLACKJACK
+                ========================== -->
+
+                <div class="game-card blackjack-card">
 
                     <div class="game-icon">
-                        🧠
+                        🃏
                     </div>
 
+
                     <h3>
-                        Quiz do Robson
+                        Blackjack 21
                     </h3>
 
+
                     <p>
-                        Responda perguntas e acumule
-                        Robson Coins.
+
+                        Chegue o mais perto
+                        possível de 21 sem
+                        ultrapassar!
+
                     </p>
 
-                    <button>
-                        EM BREVE
+
+                    <button
+                        onclick="iniciarBlackjack()"
+                    >
+
+                        🃏 JOGAR 21
+
                     </button>
+
+
+
+                    <div
+                        id="blackjack-jogo"
+                        class="blackjack-jogo"
+                    >
+
+
+                        <!-- ROBSON -->
+
+                        <div class="blackjack-area">
+
+                            <h4>
+                                🤖 Robson
+                            </h4>
+
+
+                            <div
+                                id="cartas-robson"
+                                class="cartas"
+                            >
+                            </div>
+
+
+                            <p id="pontos-robson">
+                                Pontos: ?
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- JOGADOR -->
+
+                        <div class="blackjack-area">
+
+                            <h4>
+                                👤 Você
+                            </h4>
+
+
+                            <div
+                                id="cartas-jogador"
+                                class="cartas"
+                            >
+                            </div>
+
+
+                            <p id="pontos-jogador">
+                                Pontos: 0
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- BOTÕES -->
+
+                        <div class="blackjack-acoes">
+
+                            <button
+                                id="pedir-carta"
+                                onclick="pedirCarta()"
+                                disabled
+                            >
+
+                                🃏 PEDIR CARTA
+
+                            </button>
+
+
+                            <button
+                                id="parar-blackjack"
+                                onclick="pararBlackjack()"
+                                disabled
+                            >
+
+                                ✋ PARAR
+
+                            </button>
+
+                        </div>
+
+
+
+                        <!-- RESULTADO -->
+
+                        <div
+                            id="resultado-blackjack"
+                            class="resultado-blackjack"
+                        >
+                        </div>
+
+
+                    </div>
 
                 </div>
 
-
-                <!-- DESAFIO 777 -->
-
-                <div class="game-card">
-
-                    <div class="game-icon">
-                        🎯
-                    </div>
-
-                    <h3>
-                        Desafio 777
-                    </h3>
-
-                    <p>
-                        Supere desafios e entre no ranking.
-                    </p>
-
-                    <button>
-                        EM BREVE
-                    </button>
-
-                </div>
 
             </div>
 
         </section>
 
-                </section>
 
 
-        <!-- RANKING -->
+        <!-- =========================
+             RANKING
+        ========================== -->
 
         <section
             class="ranking"
-            id="ranking">
+            id="ranking"
+        >
 
             <h2>
                 🏆 RANKING
             </h2>
 
+
             <p class="ranking-subtitle">
-                Os jogadores com mais Robson Coins
+
+                Os jogadores com mais
+                Robson Coins
+
             </p>
+
 
             <div class="ranking-list">
 
-                <div class="ranking-player">
-                    <span class="position">🥇</span>
-                    <span class="player-name">Robson</span>
-                    <span class="player-points">850</span>
-                </div>
 
                 <div class="ranking-player">
-                    <span class="position">🥈</span>
-                    <span class="player-name">Pedro</span>
-                    <span class="player-points">720</span>
+
+                    <span class="position">
+                        🥇
+                    </span>
+
+                    <span class="player-name">
+                        Robson
+                    </span>
+
+                    <span class="player-points">
+                        850
+                    </span>
+
                 </div>
+
+
 
                 <div class="ranking-player">
-                    <span class="position">🥉</span>
-                    <span class="player-name">João</span>
-                    <span class="player-points">650</span>
+
+                    <span class="position">
+                        🥈
+                    </span>
+
+                    <span class="player-name">
+                        Pedro
+                    </span>
+
+                    <span class="player-points">
+                        720
+                    </span>
+
                 </div>
+
+
 
                 <div class="ranking-player">
-                    <span class="position">4º</span>
-                    <span class="player-name">Lucas</span>
-                    <span class="player-points">510</span>
+
+                    <span class="position">
+                        🥉
+                    </span>
+
+                    <span class="player-name">
+                        João
+                    </span>
+
+                    <span class="player-points">
+                        650
+                    </span>
+
                 </div>
+
+
 
                 <div class="ranking-player">
-                    <span class="position">5º</span>
-                    <span class="player-name">Ana</span>
-                    <span class="player-points">430</span>
+
+                    <span class="position">
+                        4º
+                    </span>
+
+                    <span class="player-name">
+                        Lucas
+                    </span>
+
+                    <span class="player-points">
+                        510
+                    </span>
+
                 </div>
 
+
+
+                <div class="ranking-player">
+
+                    <span class="position">
+                        5º
+                    </span>
+
+                    <span class="player-name">
+                        Ana
+                    </span>
+
+                    <span class="player-points">
+                        430
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             HISTÓRICO
+        ========================== -->
+
+        <section
+            class="historico"
+            id="historico"
+        >
+
+            <h2>
+                📜 SEU HISTÓRICO
+            </h2>
+
+
+            <p class="historico-subtitle">
+
+                Veja suas partidas e
+                Coins conquistadas
+
+            </p>
+
+
+            <div
+                id="lista-historico"
+                class="lista-historico"
+            >
             </div>
 
         </section>
@@ -262,53 +651,72 @@
     </main>
 
 
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
 
         <p>
-            © 2026 Robson Bet 777 — Projeto fictício
+
+            © 2026 Robson Bet 777
+            — Projeto fictício
+
         </p>
 
     </footer>
 
 
+
+    <!-- =========================
+         TELA DE APELIDO
+    ========================== -->
+
+    <div
+        id="tela-apelido"
+        class="tela-apelido"
+    >
+
+        <div class="caixa-apelido">
+
+            <h2>
+                🎮 BEM-VINDO!
+            </h2>
+
+
+            <p>
+                Escolha seu apelido para começar:
+            </p>
+
+
+            <input
+                type="text"
+                id="apelido"
+                placeholder="Digite seu apelido"
+                maxlength="15"
+            >
+
+
+            <button
+                onclick="entrarNoJogo()"
+            >
+
+                ENTRAR
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
     <script src="script.js"></script>
+
 
 </body>
 
-<div id="tela-apelido" class="tela-apelido">
-
-    <div class="caixa-apelido">
-
-        <h2>🎮 BEM-VINDO!</h2>
-
-        <p>Escolha seu apelido para começar:</p>
-
-        <input
-            type="text"
-            id="apelido"
-            placeholder="Digite seu apelido"
-            maxlength="15"
-        >
-
-        <button onclick="entrarNoJogo()">
-            ENTRAR
-        </button>
-
-    </div>
-
-</div>
-
 </html>
-
-<section class="historico" id="historico">
-
-    <h2>📜 SEU HISTÓRICO</h2>
-
-    <p class="historico-subtitle">
-        Veja suas partidas e Coins conquistadas
-    </p>
-
-    <div id="lista-historico" class="lista-historico">
-    </div>
-
-</section>
