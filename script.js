@@ -1,111 +1,14 @@
-let jogadores =
-    JSON.parse(localStorage.getItem("robsonJogadores")) || [];
-
-let jogadorAtual =
-    localStorage.getItem("robsonJogadorAtual") || "";
+/* =========================
+   ROBSON BET 777
+   SISTEMA DE COINS
+========================= */
 
 let coins = 0;
 
-let somaCorreta = 0;
 
-
-// ===============================
-// ENTRAR NO JOGO
-// ===============================
-
-function entrarNoJogo() {
-
-    const input = document.getElementById("apelido");
-    const apelido = input.value.trim();
-
-    if (apelido === "") {
-
-        alert("Digite um apelido!");
-
-        return;
-    }
-
-
-    // Procura jogador existente
-
-    let jogador = jogadores.find(function(jogador) {
-
-        return jogador.nome.toLowerCase() === apelido.toLowerCase();
-
-    });
-
-
-    // Cria jogador novo
-
-    if (!jogador) {
-
-        jogador = {
-
-            nome: apelido,
-
-            pontos: 0,
-
-            historico: []
-
-        };
-
-        jogadores.push(jogador);
-
-    }
-
-
-    // Define jogador atual
-
-    jogadorAtual = jogador.nome;
-
-    coins = jogador.pontos;
-
-
-    // Salva jogador atual
-
-    localStorage.setItem(
-        "robsonJogadorAtual",
-        jogadorAtual
-    );
-
-
-    // Salva jogadores
-
-    localStorage.setItem(
-        "robsonJogadores",
-        JSON.stringify(jogadores)
-    );
-
-
-    // Fecha tela de apelido
-
-    document.getElementById(
-        "tela-apelido"
-    ).style.display = "none";
-
-
-    // Atualiza Coins
-
-    document.getElementById(
-        "coin-count"
-    ).textContent = coins;
-
-
-    // Atualiza ranking
-
-    atualizarRanking();
-
-
-    // Mostra histórico
-
-    mostrarHistorico();
-
-}
-
-
-// ===============================
-// IR PARA OS JOGOS
-// ===============================
+/* =========================
+   BOTÃO COMEÇAR A JOGAR
+========================= */
 
 function irParaJogos() {
 
@@ -118,9 +21,12 @@ function irParaJogos() {
 }
 
 
-// ===============================
-// DESAFIO DOS DADOS
-// ===============================
+/* =========================
+   DESAFIO DOS DADOS
+========================= */
+
+let somaCorreta = 0;
+
 
 function jogarDados() {
 
@@ -132,23 +38,15 @@ function jogarDados() {
 
     somaCorreta = dado1 + dado2;
 
-
     const dados =
         document.getElementById("dados");
 
 
+    /* Mostra os dados rolando */
+
     dados.innerHTML = `
-
-        <div
-            class="dado rolando"
-            id="dado1">
-        </div>
-
-        <div
-            class="dado rolando"
-            id="dado2">
-        </div>
-
+        <div class="dado rolando" id="dado1"></div>
+        <div class="dado rolando" id="dado2"></div>
     `;
 
 
@@ -167,13 +65,20 @@ function jogarDados() {
     ).value = "";
 
 
-    // Animação dos dados
+    /* Depois de 1,5 segundos,
+       mostra o resultado */
 
     setTimeout(function() {
 
-        mostrarDado("dado1", dado1);
+        mostrarDado(
+            "dado1",
+            dado1
+        );
 
-        mostrarDado("dado2", dado2);
+        mostrarDado(
+            "dado2",
+            dado2
+        );
 
 
         document.getElementById(
@@ -187,66 +92,78 @@ function jogarDados() {
 
     }, 1500);
 
-
-    function mostrarDado(id, numero) {
-
-        const dado =
-            document.getElementById(id);
+}
 
 
-        dado.classList.remove("rolando");
+/* =========================
+   MOSTRAR DADO
+========================= */
+
+function mostrarDado(id, numero) {
+
+    const dado =
+        document.getElementById(id);
 
 
-        const combinacoes = {
-
-            1: [4],
-
-            2: [1, 9],
-
-            3: [1, 4, 9],
-
-            4: [1, 3, 7, 9],
-
-            5: [1, 3, 4, 7, 9],
-
-            6: [1, 3, 4, 6, 7, 9]
-
-        };
+    dado.classList.remove(
+        "rolando"
+    );
 
 
-        dado.innerHTML = "";
+    const combinacoes = {
+
+        1: [4],
+
+        2: [1, 9],
+
+        3: [1, 4, 9],
+
+        4: [1, 3, 7, 9],
+
+        5: [1, 3, 4, 7, 9],
+
+        6: [1, 3, 4, 6, 7, 9]
+
+    };
 
 
-        combinacoes[numero].forEach(
-            function(posicao) {
-
-                const ponto =
-                    document.createElement("div");
+    dado.innerHTML = "";
 
 
-                ponto.className =
-                    "ponto";
+    combinacoes[numero].forEach(
+        function(posicao) {
+
+            const ponto =
+                document.createElement(
+                    "div"
+                );
 
 
-                ponto.style.gridArea =
-                    Math.ceil(posicao / 3) +
-                    " / " +
-                    ((posicao - 1) % 3 + 1);
+            ponto.className =
+                "ponto";
 
 
-                dado.appendChild(ponto);
+            ponto.style.gridArea =
+                Math.ceil(
+                    posicao / 3
+                ) +
+                " / " +
+                (
+                    (posicao - 1) % 3 + 1
+                );
 
-            }
-        );
 
-    }
+            dado.appendChild(ponto);
+
+        }
+    );
 
 }
 
 
-// ===============================
-// VERIFICAR RESPOSTA
-// ===============================
+/* =========================
+   VERIFICAR DADOS
+========================= */
 
 function verificarResposta() {
 
@@ -254,10 +171,6 @@ function verificarResposta() {
         document.getElementById(
             "resposta-dados"
         );
-
-
-    const resposta =
-        Number(campo.value);
 
 
     const resultado =
@@ -276,100 +189,30 @@ function verificarResposta() {
     }
 
 
-    // RESPOSTA CERTA
+    const resposta =
+        Number(campo.value);
+
 
     if (resposta === somaCorreta) {
 
         coins += somaCorreta;
 
 
-        const jogador =
-            jogadores.find(function(jogador) {
-
-                return jogador.nome === jogadorAtual;
-
-            });
-
-
-        if (jogador) {
-
-            jogador.pontos += somaCorreta;
-
-
-            // Garante que o histórico exista
-
-            if (!jogador.historico) {
-
-                jogador.historico = [];
-
-            }
-
-
-            // Adiciona ao histórico
-
-            jogador.historico.push({
-
-                jogo: "Desafio dos Dados",
-
-                pontos: somaCorreta,
-
-                data: new Date().toLocaleString("pt-BR")
-
-            });
-
-        }
-
-
-        // Salva os dados
-
-        localStorage.setItem(
-            "robsonJogadores",
-            JSON.stringify(jogadores)
-        );
-
-
-        // Atualiza Coins
-
-        document.getElementById(
-            "coin-count"
-        ).textContent = coins;
-
-
-        // Atualiza ranking
-
-        atualizarRanking();
-
-
-        // Atualiza histórico
-
-        mostrarHistorico();
+        atualizarCoins();
 
 
         resultado.innerHTML =
-
             "🎉 <strong>ACERTOU!</strong>" +
-
             "<br>" +
-
             "🪙 Você ganhou " +
-
             somaCorreta +
-
             " Robson Coins!";
 
-    }
-
-
-    // RESPOSTA ERRADA
-
-    else {
+    } else {
 
         resultado.innerHTML =
-
             "❌ <strong>ERROU!</strong>" +
-
             "<br>" +
-
             "Tente novamente!";
 
     }
@@ -377,84 +220,69 @@ function verificarResposta() {
 }
 
 
-// ===============================
-// RANKING
-// ===============================
+/* =========================
+   BLACKJACK 21
+========================= */
 
-function atualizarRanking() {
+let baralho = [];
 
-    jogadores.sort(
-        (a, b) => b.pontos - a.pontos
-    );
+let maoJogador = [];
 
+let maoRobson = [];
 
-    const rankingList =
-        document.querySelector(
-            ".ranking-list"
-        );
+let blackjackAtivo = false;
 
 
-    if (!rankingList) {
+/* =========================
+   CRIAR BARALHO
+========================= */
 
-        return;
+function criarBaralho() {
 
-    }
-
-
-    rankingList.innerHTML = "";
-
-
-    jogadores.forEach(
-        function(jogador, index) {
-
-            let posicao;
+    const naipes = [
+        "♥",
+        "♦",
+        "♣",
+        "♠"
+    ];
 
 
-            if (index === 0) {
-
-                posicao = "🥇";
-
-            }
-
-            else if (index === 1) {
-
-                posicao = "🥈";
-
-            }
-
-            else if (index === 2) {
-
-                posicao = "🥉";
-
-            }
-
-            else {
-
-                posicao =
-                    (index + 1) + "º";
-
-            }
+    const valores = [
+        "A",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "J",
+        "Q",
+        "K"
+    ];
 
 
-            rankingList.innerHTML += `
+    baralho = [];
 
-                <div class="ranking-player">
 
-                    <span class="position">
-                        ${posicao}
-                    </span>
+    naipes.forEach(
+        function(naipe) {
 
-                    <span class="player-name">
-                        ${jogador.nome}
-                    </span>
+            valores.forEach(
+                function(valor) {
 
-                    <span class="player-points">
-                        ${jogador.pontos}
-                    </span>
+                    baralho.push({
 
-                </div>
+                        valor: valor,
 
-            `;
+                        naipe: naipe
+
+                    });
+
+                }
+            );
 
         }
     );
@@ -462,105 +290,1078 @@ function atualizarRanking() {
 }
 
 
-// ===============================
-// MOSTRAR HISTÓRICO
-// ===============================
+/* =========================
+   EMBARALHAR
+========================= */
 
-function mostrarHistorico() {
+function embaralhar() {
 
-    const lista =
-        document.getElementById(
-            "lista-historico"
-        );
-
-
-    if (!lista) {
-
-        return;
-
-    }
-
-
-    const jogador =
-        jogadores.find(function(jogador) {
-
-            return jogador.nome === jogadorAtual;
-
-        });
-
-
-    if (
-        !jogador ||
-        !jogador.historico ||
-        jogador.historico.length === 0
+    for (
+        let i = baralho.length - 1;
+        i > 0;
+        i--
     ) {
 
-        lista.innerHTML = `
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
 
-            <p style="
-                text-align:center;
-                color:#777;
-            ">
 
-                Você ainda não tem partidas
-                no histórico.
-
-            </p>
-
-        `;
-
-        return;
+        [
+            baralho[i],
+            baralho[j]
+        ] = [
+            baralho[j],
+            baralho[i]
+        ];
 
     }
-
-
-    lista.innerHTML = "";
-
-
-    jogador.historico
-        .slice()
-        .reverse()
-        .forEach(function(partida) {
-
-            lista.innerHTML += `
-
-                <div class="item-historico">
-
-                    <div>
-
-                        <div class="nome-jogo">
-
-                            🎲 ${partida.jogo}
-
-                        </div>
-
-
-                        <div class="data-historico">
-
-                            ${partida.data}
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="pontos-historico">
-
-                        +${partida.pontos} 🪙
-
-                    </div>
-
-                </div>
-
-            `;
-
-        });
 
 }
 
 
-// ===============================
-// INICIAR RANKING
-// ===============================
+/* =========================
+   CALCULAR PONTOS
+========================= */
 
-atualizarRanking();
+function calcularPontos(mao) {
+
+    let pontos = 0;
+
+    let ases = 0;
+
+
+    mao.forEach(
+        function(carta) {
+
+            if (
+                carta.valor === "A"
+            ) {
+
+                pontos += 11;
+
+                ases++;
+
+            }
+
+            else if (
+                carta.valor === "K" ||
+                carta.valor === "Q" ||
+                carta.valor === "J"
+            ) {
+
+                pontos += 10;
+
+            }
+
+            else {
+
+                pontos +=
+                    Number(
+                        carta.valor
+                    );
+
+            }
+
+        }
+    );
+
+
+    /* Ás pode virar 1
+       se passar de 21 */
+
+    while (
+        pontos > 21 &&
+        ases > 0
+    ) {
+
+        pontos -= 10;
+
+        ases--;
+
+    }
+
+
+    return pontos;
+
+}
+
+
+/* =========================
+   PEGAR CARTA
+========================= */
+
+function pegarCarta() {
+
+    return baralho.pop();
+
+}
+
+
+/* =========================
+   MOSTRAR CARTAS
+========================= */
+
+function mostrarCartas() {
+
+    const jogador =
+        document.getElementById(
+            "cartas-jogador"
+        );
+
+
+    const robson =
+        document.getElementById(
+            "cartas-robson"
+        );
+
+
+    jogador.innerHTML = "";
+
+
+    maoJogador.forEach(
+        function(carta) {
+
+            criarElementoCarta(
+                jogador,
+                carta
+            );
+
+        }
+    );
+
+
+    robson.innerHTML = "";
+
+
+    maoRobson.forEach(
+        function(carta, index) {
+
+            /* Segunda carta
+               do Robson fica escondida */
+
+            if (
+                index === 1 &&
+                blackjackAtivo
+            ) {
+
+                const cartaElement =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                cartaElement.className =
+                    "carta escondida";
+
+
+                cartaElement.textContent =
+                    "?";
+
+
+                robson.appendChild(
+                    cartaElement
+                );
+
+            }
+
+            else {
+
+                criarElementoCarta(
+                    robson,
+                    carta
+                );
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "pontos-jogador"
+    ).textContent =
+        "Pontos: " +
+        calcularPontos(
+            maoJogador
+        );
+
+
+    if (blackjackAtivo) {
+
+        document.getElementById(
+            "pontos-robson"
+        ).textContent =
+            "Pontos: ?";
+
+    }
+
+    else {
+
+        document.getElementById(
+            "pontos-robson"
+        ).textContent =
+            "Pontos: " +
+            calcularPontos(
+                maoRobson
+            );
+
+    }
+
+}
+
+
+/* =========================
+   CRIAR CARTA VISUAL
+========================= */
+
+function criarElementoCarta(
+    container,
+    carta
+) {
+
+    const elemento =
+        document.createElement(
+            "div"
+        );
+
+
+    elemento.className =
+        "carta";
+
+
+    if (
+        carta.naipe === "♥" ||
+        carta.naipe === "♦"
+    ) {
+
+        elemento.classList.add(
+            "vermelha"
+        );
+
+    }
+
+
+    elemento.textContent =
+        carta.valor +
+        carta.naipe;
+
+
+    container.appendChild(
+        elemento
+    );
+
+}
+
+
+/* =========================
+   INICIAR BLACKJACK
+========================= */
+
+function iniciarBlackjack() {
+
+    criarBaralho();
+
+    embaralhar();
+
+
+    maoJogador = [];
+
+    maoRobson = [];
+
+
+    blackjackAtivo = true;
+
+
+    /* Duas cartas para cada */
+
+    maoJogador.push(
+        pegarCarta()
+    );
+
+    maoJogador.push(
+        pegarCarta()
+    );
+
+
+    maoRobson.push(
+        pegarCarta()
+    );
+
+    maoRobson.push(
+        pegarCarta()
+    );
+
+
+    document.getElementById(
+        "resultado-blackjack"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "pedir-carta"
+    ).disabled = false;
+
+
+    document.getElementById(
+        "parar-blackjack"
+    ).disabled = false;
+
+
+    mostrarCartas();
+
+
+    verificarBlackjackInicial();
+
+}
+
+
+/* =========================
+   PEDIR CARTA
+========================= */
+
+function pedirCarta() {
+
+    if (!blackjackAtivo) {
+
+        return;
+
+    }
+
+
+    maoJogador.push(
+        pegarCarta()
+    );
+
+
+    mostrarCartas();
+
+
+    const pontos =
+        calcularPontos(
+            maoJogador
+        );
+
+
+    /* Passou de 21 */
+
+    if (pontos > 21) {
+
+        finalizarBlackjack(
+            "💥 Você estourou! Mais de 21."
+        );
+
+        return;
+
+    }
+
+
+    /* Chegou exatamente a 21 */
+
+    if (pontos === 21) {
+
+        pararBlackjack();
+
+    }
+
+}
+
+
+/* =========================
+   PARAR
+========================= */
+
+function pararBlackjack() {
+
+    if (!blackjackAtivo) {
+
+        return;
+
+    }
+
+
+    blackjackAtivo = false;
+
+
+    /* Robson compra até chegar
+       a pelo menos 17 */
+
+    while (
+        calcularPontos(
+            maoRobson
+        ) < 17
+    ) {
+
+        maoRobson.push(
+            pegarCarta()
+        );
+
+    }
+
+
+    mostrarCartas();
+
+
+    compararMaos();
+
+}
+
+
+/* =========================
+   COMPARAR MÃOS
+========================= */
+
+function compararMaos() {
+
+    const jogador =
+        calcularPontos(
+            maoJogador
+        );
+
+
+    const robson =
+        calcularPontos(
+            maoRobson
+        );
+
+
+    let mensagem = "";
+
+
+    if (robson > 21) {
+
+        mensagem =
+            "🎉 Robson estourou! " +
+            "Você venceu! +10 Robson Coins";
+
+        coins += 10;
+
+    }
+
+    else if (jogador > robson) {
+
+        mensagem =
+            "🎉 Você venceu! " +
+            "+10 Robson Coins";
+
+        coins += 10;
+
+    }
+
+    else if (jogador === robson) {
+
+        mensagem =
+            "🤝 Empate!";
+
+    }
+
+    else {
+
+        mensagem =
+            "🤖 Robson venceu!";
+
+    }
+
+
+    atualizarCoins();
+
+
+    document.getElementById(
+        "resultado-blackjack"
+    ).innerHTML =
+        mensagem;
+
+
+    desativarBotoes();
+
+}
+
+
+/* =========================
+   BLACKJACK INICIAL
+========================= */
+
+function verificarBlackjackInicial() {
+
+    const jogador =
+        calcularPontos(
+            maoJogador
+        );
+
+
+    if (jogador !== 21) {
+
+        return;
+
+    }
+
+
+    blackjackAtivo = false;
+
+
+    const robson =
+        calcularPontos(
+            maoRobson
+        );
+
+
+    mostrarCartas();
+
+
+    if (robson === 21) {
+
+        document.getElementById(
+            "resultado-blackjack"
+        ).innerHTML =
+            "🤝 Os dois fizeram Blackjack!";
+
+    }
+
+    else {
+
+        coins += 15;
+
+
+        atualizarCoins();
+
+
+        document.getElementById(
+            "resultado-blackjack"
+        ).innerHTML =
+            "🃏 BLACKJACK! " +
+            "+15 Robson Coins";
+
+    }
+
+
+    desativarBotoes();
+
+}
+
+
+/* =========================
+   FINALIZAR BLACKJACK
+========================= */
+
+function finalizarBlackjack(
+    mensagem
+) {
+
+    blackjackAtivo = false;
+
+
+    mostrarCartas();
+
+
+    document.getElementById(
+        "resultado-blackjack"
+    ).innerHTML =
+        mensagem;
+
+
+    desativarBotoes();
+
+}
+
+
+/* =========================
+   DESATIVAR BOTÕES
+========================= */
+
+function desativarBotoes() {
+
+    document.getElementById(
+        "pedir-carta"
+    ).disabled = true;
+
+
+    document.getElementById(
+        "parar-blackjack"
+    ).disabled = true;
+
+}
+
+
+/* =========================
+   ATUALIZAR COINS
+========================= */
+
+function atualizarCoins() {
+
+    document.getElementById(
+        "coin-count"
+    ).textContent =
+        coins;
+
+}
+
+
+/* =========================================
+   ROLETA ROBSON
+========================================= */
+
+let corRoletaEscolhida = "";
+
+let roletaGirando = false;
+
+let roletaRotacao = 0;
+
+
+/* =========================================
+   ESCOLHER COR DA ROLETA
+========================================= */
+
+function escolherCorRoleta(cor) {
+
+    corRoletaEscolhida = cor;
+
+
+    const botoes =
+        document.querySelectorAll(
+            ".roleta-cor"
+        );
+
+
+    botoes.forEach(
+        function(botao) {
+
+            botao.classList.remove(
+                "selecionada"
+            );
+
+        }
+    );
+
+
+    if (cor === "vermelho") {
+
+        const botaoVermelho =
+            document.querySelector(
+                ".roleta-cor.vermelho"
+            );
+
+
+        if (botaoVermelho) {
+
+            botaoVermelho.classList.add(
+                "selecionada"
+            );
+
+        }
+
+    }
+
+
+    if (cor === "preto") {
+
+        const botaoPreto =
+            document.querySelector(
+                ".roleta-cor.preto"
+            );
+
+
+        if (botaoPreto) {
+
+            botaoPreto.classList.add(
+                "selecionada"
+            );
+
+        }
+
+    }
+
+
+    const resultado =
+        document.getElementById(
+            "resultado-roleta"
+        );
+
+
+    if (resultado) {
+
+        resultado.innerHTML =
+            "🎯 Cor escolhida: " +
+            cor +
+            "<br>" +
+            "Agora gire a roleta!";
+
+    }
+
+}
+
+
+/* =========================================
+   GIRAR ROLETA
+========================================= */
+
+function girarRoleta() {
+
+    if (roletaGirando) {
+
+        return;
+
+    }
+
+
+    if (!corRoletaEscolhida) {
+
+        const resultado =
+            document.getElementById(
+                "resultado-roleta"
+            );
+
+
+        if (resultado) {
+
+            resultado.innerHTML =
+                "⚠️ Escolha uma cor primeiro!";
+
+        }
+
+
+        return;
+
+    }
+
+
+    const roleta =
+        document.getElementById(
+            "roleta"
+        );
+
+
+    const resultado =
+        document.getElementById(
+            "resultado-roleta"
+        );
+
+
+    if (!roleta || !resultado) {
+
+        return;
+
+    }
+
+
+    roletaGirando = true;
+
+
+    resultado.innerHTML =
+        "🎡 A roleta está girando...";
+
+
+    /* Número de 0 até 36 */
+
+    const numero =
+        Math.floor(
+            Math.random() * 37
+        );
+
+
+    /* Números vermelhos */
+
+    const vermelhos = [
+
+        1,
+        3,
+        5,
+        7,
+        9,
+        12,
+        14,
+        16,
+        18,
+        19,
+        21,
+        23,
+        25,
+        27,
+        30,
+        32,
+        34,
+        36
+
+    ];
+
+
+    let corResultado;
+
+
+    if (numero === 0) {
+
+        corResultado = "verde";
+
+    }
+
+    else if (
+        vermelhos.includes(numero)
+    ) {
+
+        corResultado = "vermelho";
+
+    }
+
+    else {
+
+        corResultado = "preto";
+
+    }
+
+
+    /* Faz a roleta girar */
+
+    const voltas =
+        5 +
+        Math.floor(
+            Math.random() * 3
+        );
+
+
+    const graus =
+        Math.floor(
+            Math.random() * 360
+        );
+
+
+    roletaRotacao +=
+        voltas * 360 +
+        graus;
+
+
+    roleta.style.transform =
+        "rotate(" +
+        roletaRotacao +
+        "deg)";
+
+
+    /* Espera a animação */
+
+    setTimeout(
+        function() {
+
+            roletaGirando = false;
+
+
+            /* ACERTOU */
+
+            if (
+                corResultado ===
+                corRoletaEscolhida
+            ) {
+
+                coins += 5;
+
+
+                atualizarCoins();
+
+
+                resultado.innerHTML =
+                    "🎉 <strong>ACERTOU!</strong>" +
+                    "<br>" +
+                    "A roleta caiu no número " +
+                    numero +
+                    " (" +
+                    corResultado +
+                    ")" +
+                    "<br>" +
+                    "🪙 +5 Robson Coins!";
+
+            }
+
+
+            /* ZERO */
+
+            else if (
+                corResultado ===
+                "verde"
+            ) {
+
+                resultado.innerHTML =
+                    "🟢 A roleta caiu no ZERO!" +
+                    "<br>" +
+                    "Número: 0";
+
+            }
+
+
+            /* ERROU */
+
+            else {
+
+                resultado.innerHTML =
+                    "🎡 Resultado: " +
+                    numero +
+                    " (" +
+                    corResultado +
+                    ")" +
+                    "<br>" +
+                    "Não foi a cor escolhida.";
+
+            }
+
+        },
+        4200
+    );
+
+}
+
+/* =========================================
+   SISTEMA DE APELIDO
+========================================= */
+
+let apelidoJogador = "";
+
+
+/* =========================
+   ENTRAR NO JOGO
+========================= */
+
+function entrarNoJogo() {
+
+    const campo =
+        document.getElementById("apelido");
+
+    const tela =
+        document.getElementById("tela-apelido");
+
+
+    if (!campo || !tela) {
+
+        return;
+
+    }
+
+
+    const apelido =
+        campo.value.trim();
+
+
+    /* Não deixa entrar vazio */
+
+    if (apelido === "") {
+
+        alert(
+            "⚠️ Digite um apelido para continuar!"
+        );
+
+        campo.focus();
+
+        return;
+
+    }
+
+
+    /* Salva o apelido */
+
+    apelidoJogador =
+        apelido;
+
+
+    localStorage.setItem(
+        "robsonJogadorAtual",
+        apelidoJogador
+    );
+
+
+    /* Fecha a tela */
+
+    tela.style.display = "none";
+
+
+    console.log(
+        "Jogador:",
+        apelidoJogador
+    );
+
+}
+
+
+/* =========================================
+   CARREGAR APELIDO AO ABRIR O SITE
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const apelidoSalvo =
+            localStorage.getItem(
+                "robsonJogadorAtual"
+            );
+
+
+        const tela =
+            document.getElementById(
+                "tela-apelido"
+            );
+
+
+        const campo =
+            document.getElementById(
+                "apelido"
+            );
+
+
+        /* Se já existe apelido,
+           entra automaticamente */
+
+        if (
+            apelidoSalvo &&
+            apelidoSalvo.trim() !== ""
+        ) {
+
+            apelidoJogador =
+                apelidoSalvo;
+
+
+            if (tela) {
+
+                tela.style.display =
+                    "none";
+
+            }
+
+        }
+
+        else {
+
+            /* Primeiro acesso:
+               mostra a tela */
+
+            if (tela) {
+
+                tela.style.display =
+                    "flex";
+
+            }
+
+        }
+
+
+        /* Pressionar Enter também entra */
+
+        if (campo) {
+
+            campo.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        entrarNoJogo();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        atualizarCoins();
+
+    }
+);
